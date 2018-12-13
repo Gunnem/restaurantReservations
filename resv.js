@@ -31,12 +31,12 @@ app.get("/", function(req, res) {
   vistorCount++;
 });
 
-app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+app.get("/reservations", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservations.html"));
 });
 
-app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+app.get("/table", function(req, res) {
+    res.sendFile(path.join(__dirname, "table.html"));
   });
 // get reservation data with api
 
