@@ -17,7 +17,7 @@ app.use(express.json());
 // =============================================================
 var data = {
 
-    reservations: [],
+    reservation: [],
     waitlist: [],
  
 };
@@ -32,8 +32,8 @@ app.get("/", function(req, res) {
 //   vistorCount++;
 });
 
-app.get("/reservations", function(req, res) {
-  res.sendFile(path.join(__dirname, "reservations.html"));
+app.get("/reservation", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
 app.get("/table", function(req, res) {
@@ -42,7 +42,7 @@ app.get("/table", function(req, res) {
 // get reservation data with api
 
 app.get("/api/table", function(req, res) {
-  res.json(data.reservations);
+  res.json(data.reservation);
 
 });
 // for waitlist
@@ -75,8 +75,8 @@ app.post("/api/new", function(req, res) {
     }
     console.log(tableData);
    
-    if (data.reservations.length < 5) {
-        data.reservations.push(tableData);
+    if (data.reservation.length < 5) {
+        data.reservation.push(tableData);
     } else {
         data.waitlist.push(tableData);
     }
@@ -90,12 +90,12 @@ app.post("/api/new", function(req, res) {
    
     if (tableId) {
       console.log(tableId);
-       for (var i = 0; i < data.reservations.length; i++) {
-         if (tableId === data.reservations[i].id) {
-             data.reservations.splice(i, 1);
+       for (var i = 0; i < data.reservation.length; i++) {
+         if (tableId === data.reservation[i].id) {
+             data.reservation.splice(i, 1);
              if (data.waitlist.length > 0) {
                  var tempTable = data.waitlist.splice(0, 1)[0];
-                 data.reservations.push(tempTable);
+                 data.reservation.push(tempTable);
              }
    
            return res.json(true);
