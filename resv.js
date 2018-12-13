@@ -41,7 +41,7 @@ app.get("/table", function(req, res) {
   });
 // get reservation data with api
 
-app.get("/api/tables", function(req, res) {
+app.get("/api/table", function(req, res) {
   res.json(data.reservations);
 
 });
