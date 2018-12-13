@@ -14,10 +14,10 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
+      <h1>Restaurant Express</h1>
+      <h3>Your go-to website to make restaurant reservations!</h3>
       <hr>
-      <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Characters</button></a>
+      <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Reservations</button></a>
     </div>
     <div class="row">
 
@@ -25,7 +25,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h3><strong>Add Characters</strong></h3>
+            <h3><strong>Add Reservation</strong></h3>
           </div>
           <div class="card-body">
             <form method="POST" role="form">
@@ -36,24 +36,24 @@
               </div>
 
               <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" id="role">
+                <label for="time">Time</label>
+                <input type="text" class="form-control" id="time">
               </div>
 
               <div class="form-group">
-                <label for="age">Age</label>
-                <input type="text" class="form-control" id="age">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone">
               </div>
 
               <div class="form-group">
-                <label for="force-points">Force Points</label>
-                <input type="text" class="form-control" id="force-points">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email">
               </div>
 
             </form>
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add to the Force</button>
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add Reservation</button>
             </div>
           </div>
         </div>
@@ -63,21 +63,19 @@
   </div>
 
   <script type="text/javascript">
-    // Question: What does this code do?
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
-      var newCharacter = {
+      var newReservation = {
         name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+        time: $("#time").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim()
       };
 
-      // Question: What does this code do??
-      $.post("/api/characters", newCharacter)
+      $.post("/api/reservations", newReservation)
         .then(function(data) {
           console.log("add.html", data);
-          alert("Adding character...");
+          alert("Adding reservation...");
         });
     });
   </script>
