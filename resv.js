@@ -2,11 +2,12 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
+var bodyParser = require("body-parser")
 
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3070;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -14,21 +15,21 @@ app.use(express.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var inputs = {
+var data = {
 
     reservations: [],
     waitlist: [],
  
 };
 
-var visitorCount = 0;
+// var visitorCount = 0;
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
-  vistorCount++;
+//   vistorCount++;
 });
 
 app.get("/reservations", function(req, res) {
@@ -65,9 +66,7 @@ app.get("/api/vistors", function(req, res) {
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-});
+
 app.post("/api/new", function(req, res) {
     var tableData = req.body;
     console.log(tableData);
